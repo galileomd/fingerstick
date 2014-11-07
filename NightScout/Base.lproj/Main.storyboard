@@ -22,32 +22,6 @@
             </objects>
             <point key="canvasLocation" x="-876" y="157.5"/>
         </scene>
-        <!--Root View Controller-->
-        <scene sceneID="fyu-Oc-llq">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Gv-vS-NFQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="Cbz-F9-J0q" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Root View Controller" id="DHk-Z1-GHp"/>
-                </tableViewController>
-            </objects>
-            <point key="canvasLocation" x="-786" y="621"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Nsz-fy-1Kw">
-            <objects>
-                <navigationController id="DUI-bO-nJJ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rAB-3t-KPv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Cbz-F9-J0q" kind="relationship" relationship="rootViewController" id="2Kb-r3-E9c"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6yh-RE-vNo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1716" y="621"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>

@@ -49,6 +49,7 @@ class ViewController: UIViewController, PNChartDelegate {
 
 		if (sgvArray.count != 0)
 		{
+			println(xLabelArray)
 			var lineChart:PNLineChart = PNLineChart(frame: CGRectMake(0, 100.0, 300, 300.0))
 			lineChart.yLabelFormat = "%1.1f"
 			lineChart.showLabel = true
@@ -89,7 +90,14 @@ class ViewController: UIViewController, PNChartDelegate {
 	{		
 		if let url = prefs.stringForKey("nightScoutURL")
 		{
-			globalSettings.url = url
+			if url.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) != ""
+			{
+				let newurl = "http://" + url.stringByReplacingOccurrencesOfString("http://", withString: "") + "/api/v1/entries.json"
+				globalSettings.url = newurl
+			}
+			else {
+				globalSettings.url = "http://cgmtest.herokuapp.com/api/v1/entries.json"
+			}
 		}
 		else
 		{
@@ -126,11 +134,12 @@ class ViewController: UIViewController, PNChartDelegate {
 			sgvArray.insert(CGFloat(sgvFLoat),  atIndex: 0)
 			
 			//date
-			let epochDate = dataDict.objectForKey("date") as Int
-			let nsDateFromEpoch = NSDate(timeIntervalSince1970: NSTimeInterval(epochDate))
+			let epochDate:NSTimeInterval = dataDict.objectForKey("date") as Double
+			let nsDateFromEpoch = NSDate(timeIntervalSince1970: (epochDate / 1000))
 			
+			println(nsDateFromEpoch)
 			let dateFormatter = NSDateFormatter()
-			dateFormatter.dateFormat = "MM/dd"
+			dateFormatter.dateFormat = "MM-dd"
 			let date = dateFormatter.stringFromDate(nsDateFromEpoch)
 			
 			xLabelArray.insert(date, atIndex:0)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B20D06331A0C9CA600630E2C /* NSDate+SwiftUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D06321A0C9CA600630E2C /* NSDate+SwiftUtils.swift */; };
 		B21391C719FD8CA200C0C960 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21391C619FD8CA200C0C960 /* SettingsController.swift */; };
 		B21391DB19FD8CC200C0C960 /* FormBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21391CA19FD8CC200C0C960 /* FormBaseCell.swift */; };
 		B21391DC19FD8CC200C0C960 /* FormButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21391CB19FD8CC200C0C960 /* FormButtonCell.swift */; };
@@ -23,6 +24,7 @@
 		B21391E719FD8CC200C0C960 /* FormDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21391D819FD8CC200C0C960 /* FormDescriptor.swift */; };
 		B21391E819FD8CC200C0C960 /* FormRowDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21391D919FD8CC200C0C960 /* FormRowDescriptor.swift */; };
 		B21391E919FD8CC200C0C960 /* FormSectionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21391DA19FD8CC200C0C960 /* FormSectionDescriptor.swift */; };
+		B24F2B011A0B3124001C903B /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B24F2B001A0B3124001C903B /* Images-2.xcassets */; };
 		B26DD30819FB649900EB7090 /* PNBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD2FF19FB649900EB7090 /* PNBar.swift */; };
 		B26DD30919FB649900EB7090 /* PNBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD30019FB649900EB7090 /* PNBarChart.swift */; };
 		B26DD30A19FB649900EB7090 /* PNChartConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD30119FB649900EB7090 /* PNChartConfig.swift */; };
@@ -51,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B20D06321A0C9CA600630E2C /* NSDate+SwiftUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+SwiftUtils.swift"; sourceTree = "<group>"; };
 		B21391C619FD8CA200C0C960 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		B21391CA19FD8CC200C0C960 /* FormBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormBaseCell.swift; sourceTree = "<group>"; };
 		B21391CB19FD8CC200C0C960 /* FormButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormButtonCell.swift; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 		B21391D819FD8CC200C0C960 /* FormDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDescriptor.swift; sourceTree = "<group>"; };
 		B21391D919FD8CC200C0C960 /* FormRowDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormRowDescriptor.swift; sourceTree = "<group>"; };
 		B21391DA19FD8CC200C0C960 /* FormSectionDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSectionDescriptor.swift; sourceTree = "<group>"; };
+		B24F2B001A0B3124001C903B /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		B26DD2FF19FB649900EB7090 /* PNBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBar.swift; sourceTree = "<group>"; };
 		B26DD30019FB649900EB7090 /* PNBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBarChart.swift; sourceTree = "<group>"; };
 		B26DD30119FB649900EB7090 /* PNChartConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNChartConfig.swift; sourceTree = "<group>"; };
@@ -217,9 +221,11 @@
 				B21391C619FD8CA200C0C960 /* SettingsController.swift */,
 				B2CFD9FD19F9FFE2000A6765 /* Images.xcassets */,
 				B2CFD9FF19F9FFE2000A6765 /* LaunchScreen.xib */,
+				B20D06321A0C9CA600630E2C /* NSDate+SwiftUtils.swift */,
 				B21391C819FD8CC200C0C960 /* Source */,
 				B26DD2FD19FB649900EB7090 /* PNChart */,
 				B235857619FCABBC00C3062D /* JSON */,
+				B24F2B001A0B3124001C903B /* Images-2.xcassets */,
 				B2CFD9F419F9FFE2000A6765 /* Supporting Files */,
 			);
 			path = NightScout;
@@ -300,6 +306,7 @@
 				TargetAttributes = {
 					B2CFD9F019F9FFE2000A6765 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 7M2R2A2CB6;
 					};
 					B2CFDA0519F9FFE2000A6765 = {
 						CreatedOnToolsVersion = 6.0;
@@ -333,6 +340,7 @@
 			files = (
 				B2CFD9FC19F9FFE2000A6765 /* Main.storyboard in Resources */,
 				B2CFDA0119F9FFE2000A6765 /* LaunchScreen.xib in Resources */,
+				B24F2B011A0B3124001C903B /* Images-2.xcassets in Resources */,
 				B2CFD9FE19F9FFE2000A6765 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,6 +381,7 @@
 				B26DD30819FB649900EB7090 /* PNBar.swift in Sources */,
 				B21391DB19FD8CC200C0C960 /* FormBaseCell.swift in Sources */,
 				B26DD30D19FB649900EB7090 /* PNLineChart.swift in Sources */,
+				B20D06331A0C9CA600630E2C /* NSDate+SwiftUtils.swift in Sources */,
 				B21391E419FD8CC200C0C960 /* FormOptionsSelectorController.swift in Sources */,
 				B21391E019FD8CC200C0C960 /* FormSegmentedControlCell.swift in Sources */,
 				B26DD30A19FB649900EB7090 /* PNChartConfig.swift in Sources */,
@@ -436,6 +445,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sam Wang (9833KUR2T4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -453,7 +463,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -478,6 +488,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sam Wang (9833KUR2T4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -489,7 +500,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -500,6 +511,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NightScout/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -511,6 +524,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NightScout/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
