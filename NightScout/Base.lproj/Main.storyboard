@@ -49,7 +49,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="90" y="112" width="162" height="26"/>
+                                    <rect key="frame" x="90" y="102" width="162" height="26"/>
                                 </variation>
                             </label>
                         </subviews>
@@ -78,6 +78,7 @@
                                 </state>
                             </button>
                             <connections>
+                                <action selector="toggleSideMenu:" destination="vXZ-lx-hvc" id="E4A-tS-pme"/>
                                 <segue destination="t1D-b9-z4E" kind="show" identifier="goto_settings" id="re5-hf-Sub"/>
                             </connections>
                         </barButtonItem>

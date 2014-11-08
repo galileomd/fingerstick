@@ -41,7 +41,8 @@ class ViewController: UIViewController, PNChartDelegate {
 		loadSettings()
 		displayChart()
 		updateTimeNotification()
-		playAlarm()
+		//playAlarm()
+		
 		
 		NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: Selector("updateTimeNotification"), userInfo: nil, repeats: true)
 		
@@ -55,13 +56,17 @@ class ViewController: UIViewController, PNChartDelegate {
 	func displayChart()
 	{
 		json(globalSettings.url)
-
+		
+		self.view.backgroundColor = UIColor.blackColor()
+		currentSgv.textColor = UIColor.whiteColor()
+		timeNotification.textColor = UIColor.whiteColor()
+		
 		if (sgvArray.count != 0)
 		{
-			var lineChart:PNLineChart = PNLineChart(frame: CGRectMake(0, 170.0, 310, 300.0))
-			lineChart.yLabelFormat = "%1.1f"
+			var lineChart:PNLineChart = PNLineChart(frame: CGRectMake(10, 150.0, 300, 320.0))
+			lineChart.yLabelFormat = "%1.0f"
 			lineChart.showLabel = true
-			lineChart.backgroundColor = UIColor.clearColor()
+			lineChart.backgroundColor = UIColor.blackColor()
 			sortXaxis()
 			lineChart.xLabels = xLabelArray
 			lineChart.showCoordinateAxis = true
@@ -70,7 +75,7 @@ class ViewController: UIViewController, PNChartDelegate {
 			// Line Chart Nr.1
 			var data01Array: [CGFloat] = sgvArray
 			var data01:PNLineChartData = PNLineChartData()
-			data01.color = PNGreenColor
+			data01.color = PNWhiteColor
 			data01.itemCount = data01Array.count
 			data01.inflexionPointStyle = PNLineChartData.PNLineChartPointStyle.PNLineChartPointStyleCycle
 			data01.getData = ({(index: Int) -> PNLineChartDataItem in
@@ -103,7 +108,7 @@ class ViewController: UIViewController, PNChartDelegate {
 		//var calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
 		
 		dateFormatter.dateFormat = "MM/dd"
-		hourFormatter.dateFormat = "h:mma"
+		hourFormatter.dateFormat = "h:mm a"
 		
 		var initialDay = dateFormatter.stringFromDate(xLabelNsdate[0])
 		xLabelArray.insert(initialDay, atIndex:0)

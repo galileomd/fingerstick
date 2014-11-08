@@ -12,8 +12,8 @@ class PNChartLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        font = UIFont.boldSystemFontOfSize(7.0)
-        textColor = PNGreyColor
+        font = UIFont.boldSystemFontOfSize(10.0)
+        textColor = PNWhiteColor
         backgroundColor = UIColor.clearColor()
         textAlignment = NSTextAlignment.Left
         userInteractionEnabled = true

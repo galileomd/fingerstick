@@ -22,8 +22,8 @@ class PNLineChart: UIView{
                 for var index = 0;index < xLabels.count; ++index {
                     var labelText = xLabels[index] as NSString
                     var labelX = 2.0 * chartMargin +  ( CGFloat(index) * xLabelWidth) - (xLabelWidth / 2.0)
-                    var label:PNChartLabel = PNChartLabel(frame: CGRect(x:  labelX, y: chartMargin + chartCavanHeight!, width: xLabelWidth, height: chartMargin))
-                    label.textAlignment = NSTextAlignment.Center
+                    var label:PNChartLabel = PNChartLabel(frame: CGRect(x:  labelX, y: chartMargin + chartCavanHeight!, width: xLabelWidth+25, height: chartMargin))
+                    label.textAlignment = NSTextAlignment.Left
                     label.text = labelText
                     addSubview(label)
                 }
