@@ -20,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vCj-1h-psH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-876" y="157.5"/>
+            <point key="canvasLocation" x="-937.5" y="157.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -40,7 +40,16 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="52" y="13" width="229" height="99"/>
+                                    <rect key="frame" x="30" y="0.0" width="229" height="99"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nh5-1D-m8V">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="90" y="112" width="162" height="26"/>
                                 </variation>
                             </label>
                         </subviews>
@@ -48,11 +57,13 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="jh9-Nr-mDd"/>
+                                <exclude reference="Nh5-1D-m8V"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="jh9-Nr-mDd"/>
+                                <include reference="Nh5-1D-m8V"/>
                             </mask>
                         </variation>
                     </view>
@@ -65,9 +76,6 @@
                                 <state key="normal" image="settings">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="toggleSideMenu:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RXM-WJ-Z0I"/>
-                                </connections>
                             </button>
                             <connections>
                                 <segue destination="t1D-b9-z4E" kind="show" identifier="goto_settings" id="re5-hf-Sub"/>
@@ -76,6 +84,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="currentSgv" destination="jh9-Nr-mDd" id="BPc-q6-iH1"/>
+                        <outlet property="timeNotification" destination="Nh5-1D-m8V" id="leP-Ei-mkS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -91,7 +100,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wEz-13-kgv">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="wEz-13-kgv">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wEz-13-kgv" id="Ddw-h0-plL">
                                     <autoresizingMask key="autoresizingMask"/>

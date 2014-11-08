@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B20D06331A0C9CA600630E2C /* NSDate+SwiftUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D06321A0C9CA600630E2C /* NSDate+SwiftUtils.swift */; };
 		B21391C719FD8CA200C0C960 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21391C619FD8CA200C0C960 /* SettingsController.swift */; };
 		B21391DB19FD8CC200C0C960 /* FormBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21391CA19FD8CC200C0C960 /* FormBaseCell.swift */; };
 		B21391DC19FD8CC200C0C960 /* FormButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21391CB19FD8CC200C0C960 /* FormButtonCell.swift */; };
@@ -24,6 +23,8 @@
 		B21391E719FD8CC200C0C960 /* FormDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21391D819FD8CC200C0C960 /* FormDescriptor.swift */; };
 		B21391E819FD8CC200C0C960 /* FormRowDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21391D919FD8CC200C0C960 /* FormRowDescriptor.swift */; };
 		B21391E919FD8CC200C0C960 /* FormSectionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21391DA19FD8CC200C0C960 /* FormSectionDescriptor.swift */; };
+		B23842EB1A0DCA6C007A5698 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23842EA1A0DCA6C007A5698 /* Crashlytics.framework */; };
+		B23842ED1A0DDD57007A5698 /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = B23842EC1A0DDD57007A5698 /* alarm.wav */; };
 		B24F2B011A0B3124001C903B /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B24F2B001A0B3124001C903B /* Images-2.xcassets */; };
 		B26DD30819FB649900EB7090 /* PNBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD2FF19FB649900EB7090 /* PNBar.swift */; };
 		B26DD30919FB649900EB7090 /* PNBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD30019FB649900EB7090 /* PNBarChart.swift */; };
@@ -53,7 +54,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B20D06321A0C9CA600630E2C /* NSDate+SwiftUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+SwiftUtils.swift"; sourceTree = "<group>"; };
 		B21391C619FD8CA200C0C960 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		B21391CA19FD8CC200C0C960 /* FormBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormBaseCell.swift; sourceTree = "<group>"; };
 		B21391CB19FD8CC200C0C960 /* FormButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormButtonCell.swift; sourceTree = "<group>"; };
@@ -70,6 +70,8 @@
 		B21391D819FD8CC200C0C960 /* FormDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDescriptor.swift; sourceTree = "<group>"; };
 		B21391D919FD8CC200C0C960 /* FormRowDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormRowDescriptor.swift; sourceTree = "<group>"; };
 		B21391DA19FD8CC200C0C960 /* FormSectionDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSectionDescriptor.swift; sourceTree = "<group>"; };
+		B23842EA1A0DCA6C007A5698 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		B23842EC1A0DDD57007A5698 /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
 		B24F2B001A0B3124001C903B /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		B26DD2FF19FB649900EB7090 /* PNBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBar.swift; sourceTree = "<group>"; };
 		B26DD30019FB649900EB7090 /* PNBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBarChart.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B23842EB1A0DCA6C007A5698 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,14 +222,15 @@
 				B2CFD9FA19F9FFE2000A6765 /* Main.storyboard */,
 				B2CFD9F819F9FFE2000A6765 /* ViewController.swift */,
 				B21391C619FD8CA200C0C960 /* SettingsController.swift */,
-				B2CFD9FD19F9FFE2000A6765 /* Images.xcassets */,
 				B2CFD9FF19F9FFE2000A6765 /* LaunchScreen.xib */,
-				B20D06321A0C9CA600630E2C /* NSDate+SwiftUtils.swift */,
+				B23842EC1A0DDD57007A5698 /* alarm.wav */,
+				B2CFD9FD19F9FFE2000A6765 /* Images.xcassets */,
+				B24F2B001A0B3124001C903B /* Images-2.xcassets */,
 				B21391C819FD8CC200C0C960 /* Source */,
 				B26DD2FD19FB649900EB7090 /* PNChart */,
 				B235857619FCABBC00C3062D /* JSON */,
-				B24F2B001A0B3124001C903B /* Images-2.xcassets */,
 				B2CFD9F419F9FFE2000A6765 /* Supporting Files */,
+				B23842EA1A0DCA6C007A5698 /* Crashlytics.framework */,
 			);
 			path = NightScout;
 			sourceTree = "<group>";
@@ -267,6 +271,7 @@
 				B2CFD9ED19F9FFE2000A6765 /* Sources */,
 				B2CFD9EE19F9FFE2000A6765 /* Frameworks */,
 				B2CFD9EF19F9FFE2000A6765 /* Resources */,
+				B23842E91A0DCA1E007A5698 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -338,6 +343,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B23842ED1A0DDD57007A5698 /* alarm.wav in Resources */,
 				B2CFD9FC19F9FFE2000A6765 /* Main.storyboard in Resources */,
 				B2CFDA0119F9FFE2000A6765 /* LaunchScreen.xib in Resources */,
 				B24F2B011A0B3124001C903B /* Images-2.xcassets in Resources */,
@@ -353,6 +359,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B23842E91A0DCA1E007A5698 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 983356c44b1dc5cb4a330aa1c09f5e23d79f51b3 d5074d7ffd1fd6f4b107bc34a39404047152058c90cdcbcfc1e9af76c2434aae\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B2CFD9ED19F9FFE2000A6765 /* Sources */ = {
@@ -381,7 +403,6 @@
 				B26DD30819FB649900EB7090 /* PNBar.swift in Sources */,
 				B21391DB19FD8CC200C0C960 /* FormBaseCell.swift in Sources */,
 				B26DD30D19FB649900EB7090 /* PNLineChart.swift in Sources */,
-				B20D06331A0C9CA600630E2C /* NSDate+SwiftUtils.swift in Sources */,
 				B21391E419FD8CC200C0C960 /* FormOptionsSelectorController.swift in Sources */,
 				B21391E019FD8CC200C0C960 /* FormSegmentedControlCell.swift in Sources */,
 				B26DD30A19FB649900EB7090 /* PNChartConfig.swift in Sources */,
@@ -513,6 +534,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NightScout",
+				);
 				INFOPLIST_FILE = NightScout/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -526,6 +551,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NightScout",
+				);
 				INFOPLIST_FILE = NightScout/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

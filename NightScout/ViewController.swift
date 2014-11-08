@@ -7,15 +7,19 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController, PNChartDelegate {
 
 	var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
 	var sgvArray: [CGFloat] = []
 	var xLabelArray: [String] = []
+	var xLabelNsdate: [NSDate] = []
 	var direction: String = ""
 	var timer:NSTimer = NSTimer()
-	let currentTitle = "Night Scout"
+	var audioPlayer = AVAudioPlayer()
+	
+	let currentTitle = "FingerStick"
 	struct Settings {
 		var url:String = ""
 		var pollingInterval:Int = 0
@@ -24,6 +28,7 @@ class ViewController: UIViewController, PNChartDelegate {
 	var globalSettings = Settings()
 	
 	@IBOutlet weak var currentSgv: UILabel!
+	@IBOutlet weak var timeNotification: UILabel!
 	
 	@IBAction func toggleSideMenu(sender: AnyObject) {
 		self.performSegueWithIdentifier("goto_settings", sender: self)
@@ -35,6 +40,10 @@ class ViewController: UIViewController, PNChartDelegate {
 		
 		loadSettings()
 		displayChart()
+		updateTimeNotification()
+		playAlarm()
+		
+		NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: Selector("updateTimeNotification"), userInfo: nil, repeats: true)
 		
 		if globalSettings.pollingInterval > 0
 		{
@@ -49,11 +58,11 @@ class ViewController: UIViewController, PNChartDelegate {
 
 		if (sgvArray.count != 0)
 		{
-			println(xLabelArray)
-			var lineChart:PNLineChart = PNLineChart(frame: CGRectMake(0, 100.0, 300, 300.0))
+			var lineChart:PNLineChart = PNLineChart(frame: CGRectMake(0, 170.0, 310, 300.0))
 			lineChart.yLabelFormat = "%1.1f"
 			lineChart.showLabel = true
 			lineChart.backgroundColor = UIColor.clearColor()
+			sortXaxis()
 			lineChart.xLabels = xLabelArray
 			lineChart.showCoordinateAxis = true
 			lineChart.delegate = self
@@ -78,7 +87,7 @@ class ViewController: UIViewController, PNChartDelegate {
 			self.view.addSubview(lineChart)
 			self.title = currentTitle
 			
-			currentSgv.text = "\(sgvArray[sgvArray.count-1])"
+			currentSgv.text = "\( Int(sgvArray[sgvArray.count-1]) )"
 		} else
 		{
 			currentSgv.text = "?"
@@ -86,8 +95,80 @@ class ViewController: UIViewController, PNChartDelegate {
 		
 	}
 	
+	func sortXaxis()
+	{
+		let xAxisCount = xLabelNsdate.count
+		let dateFormatter = NSDateFormatter()
+		let hourFormatter = NSDateFormatter()
+		//var calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+		
+		dateFormatter.dateFormat = "MM/dd"
+		hourFormatter.dateFormat = "h:mma"
+		
+		var initialDay = dateFormatter.stringFromDate(xLabelNsdate[0])
+		xLabelArray.insert(initialDay, atIndex:0)
+		
+		for var index=1; index < xAxisCount; index++		// skip array 0 because that's always labeled
+		{
+			let currentDate = dateFormatter.stringFromDate(xLabelNsdate[index])
+			//println(xLabelNsdate[index])
+			if currentDate == initialDay
+			{
+				if index % 3 == 0
+				{
+					xLabelArray.append(hourFormatter.stringFromDate(xLabelNsdate[index]))
+				} else
+				{
+					xLabelArray.append("")
+				}
+			} else
+			{
+				initialDay = currentDate
+				xLabelArray.append(dateFormatter.stringFromDate(xLabelNsdate[index]))
+			}
+			//let dif = calendar.compareDate(dateItem, toDate: initialDay, toUnitGranularity: NSCalendarUnit.CalendarUnitYear)
+			
+		}
+		//println(xLabelArray)
+	}
+	
+	func updateTimeNotification()
+	{
+		if xLabelNsdate.count > 0
+		{
+			let timeDifference = xLabelNsdate.last!.timeIntervalSinceNow / 60 * -1
+			timeNotification.text = "\( Int(timeDifference) ) minutes ago"
+			
+			if timeDifference > 7
+			{
+				timeNotification.backgroundColor = UIColor.redColor()
+			}
+			else
+			{
+				timeNotification.backgroundColor = UIColor.clearColor()
+			}
+		}
+		
+	}
+	
+	func playAlarm()
+	{
+		var alertSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("./alarm", ofType: "wav")!)
+		
+		println(alertSound)
+		
+		// Removed deprecated use of AVAudioSessionDelegate protocol
+		AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
+		AVAudioSession.sharedInstance().setActive(true, error: nil)
+		
+		var error:NSError?
+		audioPlayer = AVAudioPlayer(contentsOfURL: alertSound, error: &error)
+		audioPlayer.prepareToPlay()
+		audioPlayer.play()
+	}
+
 	func loadSettings()
-	{		
+	{
 		if let url = prefs.stringForKey("nightScoutURL")
 		{
 			if url.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) != ""
@@ -122,9 +203,13 @@ class ViewController: UIViewController, PNChartDelegate {
 		var post = ""
 		let json = JsonController()
 		let jsonResults = json.postData(urlLink, postString: post)
+		
+		//reset graph arrays
 		sgvArray.removeAll(keepCapacity: true)
 		xLabelArray.removeAll(keepCapacity: true)
-		println("loading json results: " + String(sgvArray.count) )
+		xLabelNsdate.removeAll(keepCapacity: true)
+		
+		println("loading json results: " + String(jsonResults.count) )
 		
 		for dataDict : AnyObject in jsonResults {
 			
@@ -137,18 +222,23 @@ class ViewController: UIViewController, PNChartDelegate {
 			let epochDate:NSTimeInterval = dataDict.objectForKey("date") as Double
 			let nsDateFromEpoch = NSDate(timeIntervalSince1970: (epochDate / 1000))
 			
-			println(nsDateFromEpoch)
+			xLabelNsdate.insert(nsDateFromEpoch, atIndex: 0)
+			
 			let dateFormatter = NSDateFormatter()
-			dateFormatter.dateFormat = "MM-dd"
+			dateFormatter.dateFormat = "MM/dd"
 			let date = dateFormatter.stringFromDate(nsDateFromEpoch)
 			
-			xLabelArray.insert(date, atIndex:0)
+			// Populated in sortXAxis() for better look
+			// xLabelArray.insert(date, atIndex:0)
 			
 			// dir
 			direction = dataDict.objectForKey("direction") as NSString
 			
 			//println("Date \(date) loaded into global var graphItems")
 		}
+		
+		//println(sgvArray)
+		//println(xLabelNsdate)
 	}
 	
 	func userClickedOnLineKeyPoint(point: CGPoint, lineIndex: Int, keyPointIndex: Int)
