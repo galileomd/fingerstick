@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, PNChartDelegate {
+class ViewController: UIViewController, PNChartDelegate, ResponseHandler {
 
 	var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
 	var sgvArray: [CGFloat] = []
@@ -31,6 +31,7 @@ class ViewController: UIViewController, PNChartDelegate {
 	@IBOutlet weak var timeNotification: UILabel!
 	
 	@IBAction func toggleSideMenu(sender: AnyObject) {
+		println("whatthefuck")
 		self.performSegueWithIdentifier("goto_settings", sender: self)
 	}
 	
@@ -39,7 +40,7 @@ class ViewController: UIViewController, PNChartDelegate {
 		super.viewDidLoad()
 		
 		loadSettings()
-		displayChart()
+		refreshChartData()
 		updateTimeNotification()
 		//playAlarm()
 		
@@ -49,20 +50,24 @@ class ViewController: UIViewController, PNChartDelegate {
 		if globalSettings.pollingInterval > 0
 		{
 			timer.invalidate()		// otherwise the timers accumulate
-			timer = NSTimer.scheduledTimerWithTimeInterval(Double(globalSettings.pollingInterval), target: self, selector: Selector("displayChart"), userInfo: nil, repeats: true)
+			timer = NSTimer.scheduledTimerWithTimeInterval(Double(globalSettings.pollingInterval), target: self, selector: Selector("refreshChartData"), userInfo: nil, repeats: true)
 		}
 	}
 	
 	func displayChart()
 	{
-		json(globalSettings.url)
-		
+		println("Displaying chart")
+ 		// Cosmetics
 		self.view.backgroundColor = UIColor.blackColor()
 		currentSgv.textColor = UIColor.whiteColor()
 		timeNotification.textColor = UIColor.whiteColor()
 		
 		if (sgvArray.count != 0)
 		{
+			//draw arrow
+			
+			
+			//draw chart
 			var lineChart:PNLineChart = PNLineChart(frame: CGRectMake(10, 150.0, 300, 320.0))
 			lineChart.yLabelFormat = "%1.0f"
 			lineChart.showLabel = true
@@ -203,22 +208,41 @@ class ViewController: UIViewController, PNChartDelegate {
 		println(globalSettings.pollingInterval)
 	}
 	
-	func json(urlLink: String )
+	func refreshChartData() {		
+		JsonController().postData(globalSettings.url, postString: "", handler: self)
+	}
+	
+	func userClickedOnLineKeyPoint(point: CGPoint, lineIndex: Int, keyPointIndex: Int)
 	{
-		var post = ""
-		let json = JsonController()
-		let jsonResults = json.postData(urlLink, postString: post)
-		
+		println("Click Key on line \(point.x), \(point.y) line index is \(lineIndex) and point index is \(keyPointIndex)")
+	}
+	
+	func userClickedOnLinePoint(point: CGPoint, lineIndex: Int)
+	{
+		println("Click Key on line \(point.x), \(point.y) line index is \(lineIndex)")
+	}
+	
+	func userClickedOnBarCharIndex(barIndex: Int)
+	{
+		println("Click  on bar \(barIndex)")
+	}
+
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+	
+	func onSuccess(response:NSMutableArray) {
 		//reset graph arrays
 		sgvArray.removeAll(keepCapacity: true)
 		xLabelArray.removeAll(keepCapacity: true)
 		xLabelNsdate.removeAll(keepCapacity: true)
 		
-		println("loading json results: " + String(jsonResults.count) )
+		println("loading json results: " + String(response.count) )
 		
-		for dataDict : AnyObject in jsonResults {
+		for dataDict : AnyObject in response {
 			
-			//sgv			
+			//sgv
 			let sgv = dataDict.objectForKey("sgv") as NSString
 			let sgvFLoat = sgv.floatValue
 			sgvArray.insert(CGFloat(sgvFLoat),  atIndex: 0)
@@ -242,29 +266,15 @@ class ViewController: UIViewController, PNChartDelegate {
 			//println("Date \(date) loaded into global var graphItems")
 		}
 		
-		//println(sgvArray)
-		//println(xLabelNsdate)
+		displayChart()
 	}
 	
-	func userClickedOnLineKeyPoint(point: CGPoint, lineIndex: Int, keyPointIndex: Int)
-	{
-		println("Click Key on line \(point.x), \(point.y) line index is \(lineIndex) and point index is \(keyPointIndex)")
+	func onFailure() {
+		let alertView = UIAlertView()
+		alertView.title = "Failed!"
+		alertView.message = "Something not good happened"
+		alertView.addButtonWithTitle("OK")
+		alertView.show()
 	}
-	
-	func userClickedOnLinePoint(point: CGPoint, lineIndex: Int)
-	{
-		println("Click Key on line \(point.x), \(point.y) line index is \(lineIndex)")
-	}
-	
-	func userClickedOnBarCharIndex(barIndex: Int)
-	{
-		println("Click  on bar \(barIndex)")
-	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-	
 }
 

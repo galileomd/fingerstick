@@ -34,6 +34,7 @@
 		B26DD30D19FB649900EB7090 /* PNLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD30519FB649900EB7090 /* PNLineChart.swift */; };
 		B26DD30E19FB649900EB7090 /* PNLineChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD30619FB649900EB7090 /* PNLineChartData.swift */; };
 		B26DD30F19FB649900EB7090 /* PNValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD30719FB649900EB7090 /* PNValue.swift */; };
+		B2BD59921A0ED65400551767 /* ResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD59911A0ED65400551767 /* ResponseHandler.swift */; };
 		B2CFD9F719F9FFE2000A6765 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CFD9F619F9FFE2000A6765 /* AppDelegate.swift */; };
 		B2CFD9F919F9FFE2000A6765 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CFD9F819F9FFE2000A6765 /* ViewController.swift */; };
 		B2CFD9FC19F9FFE2000A6765 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2CFD9FA19F9FFE2000A6765 /* Main.storyboard */; };
@@ -81,6 +82,7 @@
 		B26DD30519FB649900EB7090 /* PNLineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNLineChart.swift; sourceTree = "<group>"; };
 		B26DD30619FB649900EB7090 /* PNLineChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNLineChartData.swift; sourceTree = "<group>"; };
 		B26DD30719FB649900EB7090 /* PNValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNValue.swift; sourceTree = "<group>"; };
+		B2BD59911A0ED65400551767 /* ResponseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHandler.swift; sourceTree = "<group>"; };
 		B2CFD9F119F9FFE2000A6765 /* NightScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NightScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2CFD9F519F9FFE2000A6765 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2CFD9F619F9FFE2000A6765 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				B2CFDA2F19FA81E8000A6765 /* JsonController.swift */,
+				B2BD59911A0ED65400551767 /* ResponseHandler.swift */,
 			);
 			name = JSON;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				B21391C719FD8CA200C0C960 /* SettingsController.swift in Sources */,
 				B21391DC19FD8CC200C0C960 /* FormButtonCell.swift in Sources */,
 				B21391E719FD8CC200C0C960 /* FormDescriptor.swift in Sources */,
+				B2BD59921A0ED65400551767 /* ResponseHandler.swift in Sources */,
 				B21391E319FD8CC200C0C960 /* FormTextFieldCell.swift in Sources */,
 				B21391DD19FD8CC200C0C960 /* FormCheckCell.swift in Sources */,
 				B2CFD9F719F9FFE2000A6765 /* AppDelegate.swift in Sources */,
