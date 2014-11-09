@@ -14,8 +14,8 @@ class SettingsController: FormViewController, FormViewControllerDelegate
 	struct Settings {
 		var url:String = ""
 		var pollingInterval:Int = 0
-		var lowAlarm = 0
-		var highAlarm = 0
+		var lowAlarm = 90
+		var highAlarm = 200
 	}
 	
 	var globalSettings = Settings()
@@ -35,6 +35,20 @@ class SettingsController: FormViewController, FormViewControllerDelegate
 			globalSettings.pollingInterval = localPolling
 		}
 		
+		if let lowAlarm = prefs.integerForKey("lowAlarm") as Int?
+		{
+			globalSettings.lowAlarm = lowAlarm
+		}
+		
+		if let highAlarm = prefs.integerForKey("highAlarm") as Int?
+		{
+			globalSettings.highAlarm = highAlarm
+		}
+		
+		println(globalSettings.url)
+		println(globalSettings.pollingInterval)
+		println(globalSettings.lowAlarm)
+		println(globalSettings.highAlarm)
 		self.loadForm()
 
 	}
@@ -54,17 +68,20 @@ class SettingsController: FormViewController, FormViewControllerDelegate
 		let pollingInterval = self.form.formValues()["pollingInterval"]!
 		prefs.setObject(pollingInterval, forKey: "pollingInterval")
 		
+		let lowAlarm = self.form.formValues()["lowAlarm"]!
+		prefs.setObject(lowAlarm, forKey: "lowAlarm")
+		
+		let highAlarm = self.form.formValues()["highAlarm"]!
+		prefs.setObject(highAlarm, forKey: "highAlarm")
+		
 		prefs.synchronize()
-
+		
 		//  Debugging
 		println("Saving")
 		println(nightScoutURL)
 		println(pollingInterval)
-		
-		/*let message = self.form.formValues().description
-		let alert: UIAlertView = UIAlertView(title: "Form output", message: message, delegate: nil, cancelButtonTitle: "OK")
-		alert.show()
-		*/
+		println(lowAlarm)
+		println(highAlarm)
 		
 		self.navigationController?.popViewControllerAnimated(true)
 	}
@@ -97,15 +114,14 @@ class SettingsController: FormViewController, FormViewControllerDelegate
 		row.value = globalSettings.pollingInterval
 		section1.addRow(row)
 		
-		
 		let section2 = FormSectionDescriptor()
 		section2.headerTitle = "Alarms"
 		row = FormRowDescriptor(tag: "lowAlarm", rowType: .Phone, title: "Low range")
-		row.value = globalSettings.lowAlarm
+		row.value = String(globalSettings.lowAlarm)
 		section2.addRow(row)
 		
 		row = FormRowDescriptor(tag: "highAlarm", rowType: .Phone, title: "High range")
-		row.value = globalSettings.highAlarm
+		row.value = String(globalSettings.highAlarm)
 		section2.addRow(row)
 		
 		form.sections = [section1, section2]

@@ -22,12 +22,15 @@ class JsonController {
 		var response: AutoreleasingUnsafeMutablePointer <NSURLResponse?>=nil
 		var error: AutoreleasingUnsafeMutablePointer <NSErrorPointer?>=nil
 		
-		let queue = NSOperationQueue()
+		let queue = NSOperationQueue.mainQueue()
 		
-		NSURLConnection.sendAsynchronousRequest(
-			request,
-			queue: queue,
-			completionHandler: {(response, data, error) in self.processData(data, handler: handler)})
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+		{
+			NSURLConnection.sendAsynchronousRequest(
+				request,
+				queue: queue,
+				completionHandler: {response, data, error in self.processData(data, handler: handler)})
+		}
 	}
 	
 	func processData(response:NSData, handler:ResponseHandler)

@@ -23,17 +23,14 @@ class ViewController: UIViewController, PNChartDelegate, ResponseHandler {
 	struct Settings {
 		var url:String = ""
 		var pollingInterval:Int = 0
+		var lowAlarm = 90
+		var highAlarm = 120
 	}
 	
 	var globalSettings = Settings()
 	
 	@IBOutlet weak var currentSgv: UILabel!
 	@IBOutlet weak var timeNotification: UILabel!
-	
-	@IBAction func toggleSideMenu(sender: AnyObject) {
-		println("whatthefuck")
-		self.performSegueWithIdentifier("goto_settings", sender: self)
-	}
 	
 	override func viewDidAppear(animated: Bool)
 	{
@@ -50,7 +47,7 @@ class ViewController: UIViewController, PNChartDelegate, ResponseHandler {
 		if globalSettings.pollingInterval > 0
 		{
 			timer.invalidate()		// otherwise the timers accumulate
-			timer = NSTimer.scheduledTimerWithTimeInterval(Double(globalSettings.pollingInterval), target: self, selector: Selector("refreshChartData"), userInfo: nil, repeats: true)
+			//timer = NSTimer.scheduledTimerWithTimeInterval(Double(globalSettings.pollingInterval), target: self, selector: Selector("refreshChartData"), userInfo: nil, repeats: true)
 		}
 	}
 	
@@ -203,9 +200,30 @@ class ViewController: UIViewController, PNChartDelegate, ResponseHandler {
 		else {
 			globalSettings.pollingInterval = 30
 		}
+		
+		if let lowAlarm = prefs.integerForKey("lowAlarm") as Int?
+		{
+			globalSettings.lowAlarm = lowAlarm
+			
+		}
+		else {
+			globalSettings.pollingInterval = 30
+		}
+		
+		if let highAlarm = prefs.integerForKey("highAlarm") as Int?
+		{
+			globalSettings.highAlarm = highAlarm
+			
+		}
+		else {
+			globalSettings.pollingInterval = 30
+		}
+		
 		println("Settings loaded:")
 		println(globalSettings.url)
 		println(globalSettings.pollingInterval)
+		println(globalSettings.lowAlarm)
+		println(globalSettings.highAlarm)
 	}
 	
 	func refreshChartData() {		
