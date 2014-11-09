@@ -24,13 +24,10 @@ class JsonController {
 		
 		let queue = NSOperationQueue.mainQueue()
 		
-		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
-		{
-			NSURLConnection.sendAsynchronousRequest(
-				request,
-				queue: queue,
-				completionHandler: {response, data, error in self.processData(data, handler: handler)})
-		}
+		NSURLConnection.sendAsynchronousRequest(
+			request,
+			queue: queue,
+			completionHandler: {response, data, error in self.processData(data, handler: handler)})
 	}
 	
 	func processData(response:NSData, handler:ResponseHandler)
