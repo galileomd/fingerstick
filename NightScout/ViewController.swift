@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, PNChartDelegate, ResponseHandler {
+class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 
 	var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
 	var sgvArray: [CGFloat] = []
@@ -18,6 +18,9 @@ class ViewController: UIViewController, PNChartDelegate, ResponseHandler {
 	var direction: String = ""
 	var timer:NSTimer = NSTimer()
 	var audioPlayer = AVAudioPlayer()
+	
+	var label = UILabel()
+	var lineChart: LineChart?
 	
 	let currentTitle = "FingerStick"
 	struct Settings {
@@ -37,9 +40,8 @@ class ViewController: UIViewController, PNChartDelegate, ResponseHandler {
 		super.viewDidLoad()
 		
 		loadSettings()
-		refreshChartData()
 		updateTimeNotification()
-		//playAlarm()
+		refreshChartData()
 		
 		
 		NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: Selector("updateTimeNotification"), userInfo: nil, repeats: true)
@@ -47,7 +49,7 @@ class ViewController: UIViewController, PNChartDelegate, ResponseHandler {
 		if globalSettings.pollingInterval > 0
 		{
 			timer.invalidate()		// otherwise the timers accumulate
-			//timer = NSTimer.scheduledTimerWithTimeInterval(Double(globalSettings.pollingInterval), target: self, selector: Selector("refreshChartData"), userInfo: nil, repeats: true)
+			timer = NSTimer.scheduledTimerWithTimeInterval(Double(globalSettings.pollingInterval), target: self, selector: Selector("refreshChartData"), userInfo: nil, repeats: true)
 		}
 	}
 	
@@ -59,16 +61,54 @@ class ViewController: UIViewController, PNChartDelegate, ResponseHandler {
 		currentSgv.textColor = UIColor.whiteColor()
 		timeNotification.textColor = UIColor.whiteColor()
 		
-		if (sgvArray.count != 0)
+		if (sgvArray.count > 0)
 		{
 			//draw arrow
 			
 			
 			//draw chart
+			var views: Dictionary<String, AnyObject> = [:]
+			
+			label.text = "..."
+			label.setTranslatesAutoresizingMaskIntoConstraints(false)
+			label.textAlignment = NSTextAlignment.Center
+			self.view.addSubview(label)
+			views["label"] = label
+			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: nil, metrics: nil, views: views))
+			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-180-[label]", options: nil, metrics: nil, views: views))
+			
+			var data: Array<CGFloat> = sgvArray
+			//var data2: Array<CGFloat> = [1, 3, 5, 13, 17, 20,12,21, 42,41]
+			
+			sortXaxis()
+			var xAxisLabels:[String] = xLabelArray
+			
+			//if let lineChart = LineChart()
+			
+			let lineChart = LineChart()
+			lineChart.areaUnderLinesVisible = false
+			lineChart.labelsXVisible = true
+			lineChart.labelsYVisible = true
+			lineChart.lowAlarm = globalSettings.lowAlarm
+			lineChart.highAlarm = globalSettings.highAlarm
+			
+			lineChart.addLine(data)
+			//lineChart.addLine(data2)
+			lineChart.addXAxisLabels(xAxisLabels)
+			
+			lineChart.setTranslatesAutoresizingMaskIntoConstraints(false)
+			lineChart.delegate = self
+			self.view.addSubview(lineChart)
+			views["chart"] = lineChart
+			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: nil, metrics: nil, views: views))
+			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==200)]", options: nil, metrics: nil, views: views))
+
+			self.title = currentTitle
+			
+			/*
 			var lineChart:PNLineChart = PNLineChart(frame: CGRectMake(10, 150.0, 300, 320.0))
 			lineChart.yLabelFormat = "%1.0f"
 			lineChart.showLabel = true
-			lineChart.backgroundColor = UIColor.blackColor()
 			sortXaxis()
 			lineChart.xLabels = xLabelArray
 			lineChart.showCoordinateAxis = true
@@ -87,14 +127,19 @@ class ViewController: UIViewController, PNChartDelegate, ResponseHandler {
 				return item
 			})
 			
+			
+			lineChart.lowAlarm = globalSettings.lowAlarm
+			lineChart.highAlarm = globalSettings.highAlarm
 			lineChart.chartData = [data01]
 			lineChart.strokeChart()
 			lineChart.delegate = self
 			
 			self.view.addSubview(lineChart)
-			self.title = currentTitle
+			*/
 			
-			currentSgv.text = "\( Int(sgvArray[sgvArray.count-1]) )"
+			currentSgv.text = "\( Int(sgvArray.last!) )"
+			
+			checkAlarms()
 		} else
 		{
 			currentSgv.text = "?"
@@ -156,6 +201,18 @@ class ViewController: UIViewController, PNChartDelegate, ResponseHandler {
 			}
 		}
 		
+	}
+	
+	func checkAlarms()
+	{
+		println("Alarm checked")
+		if sgvArray.last != nil &&
+		   (sgvArray.last > CGFloat(globalSettings.highAlarm) ||
+			sgvArray.last < CGFloat(globalSettings.lowAlarm))
+		{
+			println("Alarmed at ", sgvArray.last)
+			playAlarm()
+		}
 	}
 	
 	func playAlarm()
@@ -294,5 +351,14 @@ class ViewController: UIViewController, PNChartDelegate, ResponseHandler {
 		alertView.addButtonWithTitle("OK")
 		alertView.show()
 	}
+	
+	
+	/**
+	* Line chart delegate method.
+	*/
+	func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
+		label.text = "x: \(x)     y: \(yValues)"
+	}
+
 }
 

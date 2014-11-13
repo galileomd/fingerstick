@@ -13,13 +13,11 @@ class JsonController {
 	func postData(urlString:String, postString:NSString, handler:ResponseHandler)
 	{
 		var postData:NSData = postString.dataUsingEncoding(NSASCIIStringEncoding)!
-		var postLength:NSString = String( postData.length )
 		var jsonData:NSMutableArray = []
-		var urlData:NSData = NSData()
 		
-		var url: NSURL = NSURL(string: urlString)
-		var request: NSURLRequest = NSURLRequest(URL: url)
-		var response: AutoreleasingUnsafeMutablePointer <NSURLResponse?>=nil
+		let url: NSURL = NSURL(string: urlString)
+		let request: NSURLRequest = NSURLRequest(URL: url)
+		let response: AutoreleasingUnsafeMutablePointer <NSURLResponse?>=nil
 		var error: AutoreleasingUnsafeMutablePointer <NSErrorPointer?>=nil
 		
 		let queue = NSOperationQueue.mainQueue()

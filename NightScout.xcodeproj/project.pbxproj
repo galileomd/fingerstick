@@ -26,14 +26,8 @@
 		B23842EB1A0DCA6C007A5698 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23842EA1A0DCA6C007A5698 /* Crashlytics.framework */; };
 		B23842ED1A0DDD57007A5698 /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = B23842EC1A0DDD57007A5698 /* alarm.wav */; };
 		B24F2B011A0B3124001C903B /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B24F2B001A0B3124001C903B /* Images-2.xcassets */; };
-		B26DD30819FB649900EB7090 /* PNBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD2FF19FB649900EB7090 /* PNBar.swift */; };
-		B26DD30919FB649900EB7090 /* PNBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD30019FB649900EB7090 /* PNBarChart.swift */; };
-		B26DD30A19FB649900EB7090 /* PNChartConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD30119FB649900EB7090 /* PNChartConfig.swift */; };
-		B26DD30B19FB649900EB7090 /* PNChartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD30219FB649900EB7090 /* PNChartDelegate.swift */; };
-		B26DD30C19FB649900EB7090 /* PNChartLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD30419FB649900EB7090 /* PNChartLabel.swift */; };
-		B26DD30D19FB649900EB7090 /* PNLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD30519FB649900EB7090 /* PNLineChart.swift */; };
-		B26DD30E19FB649900EB7090 /* PNLineChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD30619FB649900EB7090 /* PNLineChartData.swift */; };
-		B26DD30F19FB649900EB7090 /* PNValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26DD30719FB649900EB7090 /* PNValue.swift */; };
+		B2928A811A1447A700242688 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2928A7F1A1447A700242688 /* LineChart.swift */; };
+		B2928A821A1447A700242688 /* DotCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2928A801A1447A700242688 /* DotCALayer.swift */; };
 		B2BD59921A0ED65400551767 /* ResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD59911A0ED65400551767 /* ResponseHandler.swift */; };
 		B2CFD9F719F9FFE2000A6765 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CFD9F619F9FFE2000A6765 /* AppDelegate.swift */; };
 		B2CFD9F919F9FFE2000A6765 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CFD9F819F9FFE2000A6765 /* ViewController.swift */; };
@@ -74,14 +68,8 @@
 		B23842EA1A0DCA6C007A5698 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		B23842EC1A0DDD57007A5698 /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
 		B24F2B001A0B3124001C903B /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
-		B26DD2FF19FB649900EB7090 /* PNBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBar.swift; sourceTree = "<group>"; };
-		B26DD30019FB649900EB7090 /* PNBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBarChart.swift; sourceTree = "<group>"; };
-		B26DD30119FB649900EB7090 /* PNChartConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNChartConfig.swift; sourceTree = "<group>"; };
-		B26DD30219FB649900EB7090 /* PNChartDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNChartDelegate.swift; sourceTree = "<group>"; };
-		B26DD30419FB649900EB7090 /* PNChartLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNChartLabel.swift; sourceTree = "<group>"; };
-		B26DD30519FB649900EB7090 /* PNLineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNLineChart.swift; sourceTree = "<group>"; };
-		B26DD30619FB649900EB7090 /* PNLineChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNLineChartData.swift; sourceTree = "<group>"; };
-		B26DD30719FB649900EB7090 /* PNValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNValue.swift; sourceTree = "<group>"; };
+		B2928A7F1A1447A700242688 /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		B2928A801A1447A700242688 /* DotCALayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotCALayer.swift; sourceTree = "<group>"; };
 		B2BD59911A0ED65400551767 /* ResponseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHandler.swift; sourceTree = "<group>"; };
 		B2CFD9F119F9FFE2000A6765 /* NightScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NightScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2CFD9F519F9FFE2000A6765 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -170,35 +158,13 @@
 			name = JSON;
 			sourceTree = "<group>";
 		};
-		B26DD2FD19FB649900EB7090 /* PNChart */ = {
+		B2928A7E1A14478800242688 /* LineChart */ = {
 			isa = PBXGroup;
 			children = (
-				B26DD30319FB649900EB7090 /* PNLineChart */,
-				B26DD2FE19FB649900EB7090 /* PNBarChart */,
-				B26DD30119FB649900EB7090 /* PNChartConfig.swift */,
-				B26DD30219FB649900EB7090 /* PNChartDelegate.swift */,
-				B26DD30719FB649900EB7090 /* PNValue.swift */,
+				B2928A7F1A1447A700242688 /* LineChart.swift */,
+				B2928A801A1447A700242688 /* DotCALayer.swift */,
 			);
-			path = PNChart;
-			sourceTree = "<group>";
-		};
-		B26DD2FE19FB649900EB7090 /* PNBarChart */ = {
-			isa = PBXGroup;
-			children = (
-				B26DD2FF19FB649900EB7090 /* PNBar.swift */,
-				B26DD30019FB649900EB7090 /* PNBarChart.swift */,
-			);
-			path = PNBarChart;
-			sourceTree = "<group>";
-		};
-		B26DD30319FB649900EB7090 /* PNLineChart */ = {
-			isa = PBXGroup;
-			children = (
-				B26DD30419FB649900EB7090 /* PNChartLabel.swift */,
-				B26DD30519FB649900EB7090 /* PNLineChart.swift */,
-				B26DD30619FB649900EB7090 /* PNLineChartData.swift */,
-			);
-			path = PNLineChart;
+			name = LineChart;
 			sourceTree = "<group>";
 		};
 		B2CFD9E819F9FFE2000A6765 = {
@@ -229,8 +195,8 @@
 				B23842EC1A0DDD57007A5698 /* alarm.wav */,
 				B2CFD9FD19F9FFE2000A6765 /* Images.xcassets */,
 				B24F2B001A0B3124001C903B /* Images-2.xcassets */,
+				B2928A7E1A14478800242688 /* LineChart */,
 				B21391C819FD8CC200C0C960 /* Source */,
-				B26DD2FD19FB649900EB7090 /* PNChart */,
 				B235857619FCABBC00C3062D /* JSON */,
 				B2CFD9F419F9FFE2000A6765 /* Supporting Files */,
 				B23842EA1A0DCA6C007A5698 /* Crashlytics.framework */,
@@ -385,12 +351,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B21391E619FD8CC200C0C960 /* FormViewController.swift in Sources */,
-				B26DD30B19FB649900EB7090 /* PNChartDelegate.swift in Sources */,
 				B21391DF19FD8CC200C0C960 /* FormPickerCell.swift in Sources */,
 				B21391E219FD8CC200C0C960 /* FormSwitchCell.swift in Sources */,
-				B26DD30F19FB649900EB7090 /* PNValue.swift in Sources */,
 				B2CFDA3019FA81E8000A6765 /* JsonController.swift in Sources */,
-				B26DD30E19FB649900EB7090 /* PNLineChartData.swift in Sources */,
 				B21391E119FD8CC200C0C960 /* FormSelectorCell.swift in Sources */,
 				B21391DE19FD8CC200C0C960 /* FormDateCell.swift in Sources */,
 				B2CFD9F919F9FFE2000A6765 /* ViewController.swift in Sources */,
@@ -398,20 +361,17 @@
 				B21391DC19FD8CC200C0C960 /* FormButtonCell.swift in Sources */,
 				B21391E719FD8CC200C0C960 /* FormDescriptor.swift in Sources */,
 				B2BD59921A0ED65400551767 /* ResponseHandler.swift in Sources */,
+				B2928A811A1447A700242688 /* LineChart.swift in Sources */,
 				B21391E319FD8CC200C0C960 /* FormTextFieldCell.swift in Sources */,
 				B21391DD19FD8CC200C0C960 /* FormCheckCell.swift in Sources */,
 				B2CFD9F719F9FFE2000A6765 /* AppDelegate.swift in Sources */,
 				B21391E819FD8CC200C0C960 /* FormRowDescriptor.swift in Sources */,
 				B21391E519FD8CC200C0C960 /* FormSelector.swift in Sources */,
+				B2928A821A1447A700242688 /* DotCALayer.swift in Sources */,
 				B21391E919FD8CC200C0C960 /* FormSectionDescriptor.swift in Sources */,
-				B26DD30819FB649900EB7090 /* PNBar.swift in Sources */,
 				B21391DB19FD8CC200C0C960 /* FormBaseCell.swift in Sources */,
-				B26DD30D19FB649900EB7090 /* PNLineChart.swift in Sources */,
 				B21391E419FD8CC200C0C960 /* FormOptionsSelectorController.swift in Sources */,
 				B21391E019FD8CC200C0C960 /* FormSegmentedControlCell.swift in Sources */,
-				B26DD30A19FB649900EB7090 /* PNChartConfig.swift in Sources */,
-				B26DD30C19FB649900EB7090 /* PNChartLabel.swift in Sources */,
-				B26DD30919FB649900EB7090 /* PNBarChart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
