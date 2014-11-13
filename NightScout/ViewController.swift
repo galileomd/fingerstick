@@ -11,29 +11,34 @@ import AVFoundation
 
 class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 
-	var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+	@IBOutlet weak var currentSgvLabel: UILabel!
+	@IBOutlet weak var timeNotificationLabel: UILabel!
+	@IBOutlet weak var arrowImage: UIImageView!
+	
+	let currentTitle = "FingerStick"
+
+	//
 	var sgvArray: [CGFloat] = []
 	var xLabelArray: [String] = []
 	var xLabelNsdate: [NSDate] = []
-	var direction: String = ""
+	var sgvDirectionArrow: String = ""
+	
+	// misc variables
 	var timer:NSTimer = NSTimer()
 	var audioPlayer = AVAudioPlayer()
 	
-	var label = UILabel()
+	// chart variables
+	var chartLabel = UILabel()
 	var lineChart: LineChart?
 	
-	let currentTitle = "FingerStick"
+	var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
 	struct Settings {
 		var url:String = ""
 		var pollingInterval:Int = 0
 		var lowAlarm = 90
 		var highAlarm = 120
 	}
-	
 	var globalSettings = Settings()
-	
-	@IBOutlet weak var currentSgv: UILabel!
-	@IBOutlet weak var timeNotification: UILabel!
 	
 	override func viewDidAppear(animated: Bool)
 	{
@@ -42,8 +47,43 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 		loadSettings()
 		updateTimeNotification()
 		refreshChartData()
+		setupTimers()
+
+	}
+	
+	func drawArrow(arrowDirection:String, targetImage: UIImageView)
+	{
+		println("Arrow Direction: " + sgvDirectionArrow)
+		switch sgvDirectionArrow {
+		case "Flat":
+			self.arrowImage.transform = CGAffineTransformMakeRotation( 0 )
+		case "DoubleUp":
+			self.arrowImage.transform = CGAffineTransformMakeRotation(-90.0 * CGFloat(M_PI) / 180.0 )
+		case "SingleUp":
+			self.arrowImage.transform = CGAffineTransformMakeRotation(-90.0 * CGFloat(M_PI) / 180.0 )
+		case "FortyFiveUp":
+			self.arrowImage.transform = CGAffineTransformMakeRotation(-45.0 * CGFloat(M_PI) / 180.0 )
+		case "FortyFiveDown":
+			self.arrowImage.transform = CGAffineTransformMakeRotation(45.0 * CGFloat(M_PI) / 180.0 )
+		case "SingleDown":
+			self.arrowImage.transform = CGAffineTransformMakeRotation(90.0 * CGFloat(M_PI) / 180.0 )
+		case "DoubleDown":
+			self.arrowImage.transform = CGAffineTransformMakeRotation(90.0 * CGFloat(M_PI) / 180.0 )
+		case "NOT COMPUTABLE":
+			println("not computable")
+			//self.arrowImage.
+		case "RATE OUT OF RANGE":
+			println("out of range")
+			//self.arrowImage.transform = CGAffineTransformMakeRotation(90.0 * CGFloat(M_PI) / 180.0 )
+		default:
+			self.arrowImage.transform = CGAffineTransformMakeRotation(0)
+			
+		}
 		
-		
+	}
+	
+	func setupTimers()
+	{
 		NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: Selector("updateTimeNotification"), userInfo: nil, repeats: true)
 		
 		if globalSettings.pollingInterval > 0
@@ -57,33 +97,26 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 	{
 		println("Displaying chart")
  		// Cosmetics
+		self.title = currentTitle
 		self.view.backgroundColor = UIColor.blackColor()
-		currentSgv.textColor = UIColor.whiteColor()
-		timeNotification.textColor = UIColor.whiteColor()
+		currentSgvLabel.textColor = UIColor.whiteColor()
+		timeNotificationLabel.textColor = UIColor.whiteColor()
 		
-		if (sgvArray.count > 0)
+		if (!sgvArray.isEmpty)
 		{
-			//draw arrow
-			
-			
-			//draw chart
 			var views: Dictionary<String, AnyObject> = [:]
 			
-			label.text = "..."
-			label.setTranslatesAutoresizingMaskIntoConstraints(false)
-			label.textAlignment = NSTextAlignment.Center
-			self.view.addSubview(label)
-			views["label"] = label
-			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: nil, metrics: nil, views: views))
-			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-180-[label]", options: nil, metrics: nil, views: views))
-			
-			var data: Array<CGFloat> = sgvArray
-			//var data2: Array<CGFloat> = [1, 3, 5, 13, 17, 20,12,21, 42,41]
+			chartLabel.text = "..."
+			chartLabel.textColor = UIColor.whiteColor()
+			chartLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+			chartLabel.textAlignment = NSTextAlignment.Center
+			self.view.addSubview(chartLabel)
+			views["chartLabel"] = chartLabel
+			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chartLabel]-|", options: nil, metrics: nil, views: views))
+			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-140-[chartLabel]", options: nil, metrics: nil, views: views))
 			
 			sortXaxis()
 			var xAxisLabels:[String] = xLabelArray
-			
-			//if let lineChart = LineChart()
 			
 			let lineChart = LineChart()
 			lineChart.areaUnderLinesVisible = false
@@ -92,7 +125,7 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 			lineChart.lowAlarm = globalSettings.lowAlarm
 			lineChart.highAlarm = globalSettings.highAlarm
 			
-			lineChart.addLine(data)
+			lineChart.addLine(sgvArray)
 			//lineChart.addLine(data2)
 			lineChart.addXAxisLabels(xAxisLabels)
 			
@@ -101,48 +134,15 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 			self.view.addSubview(lineChart)
 			views["chart"] = lineChart
 			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: nil, metrics: nil, views: views))
-			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==200)]", options: nil, metrics: nil, views: views))
+			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[chartLabel]-[chart(==200)]", options: nil, metrics: nil, views: views))
 
-			self.title = currentTitle
 			
-			/*
-			var lineChart:PNLineChart = PNLineChart(frame: CGRectMake(10, 150.0, 300, 320.0))
-			lineChart.yLabelFormat = "%1.0f"
-			lineChart.showLabel = true
-			sortXaxis()
-			lineChart.xLabels = xLabelArray
-			lineChart.showCoordinateAxis = true
-			lineChart.delegate = self
-			
-			// Line Chart Nr.1
-			var data01Array: [CGFloat] = sgvArray
-			var data01:PNLineChartData = PNLineChartData()
-			data01.color = PNWhiteColor
-			data01.itemCount = data01Array.count
-			data01.inflexionPointStyle = PNLineChartData.PNLineChartPointStyle.PNLineChartPointStyleCycle
-			data01.getData = ({(index: Int) -> PNLineChartDataItem in
-				var yValue:CGFloat = data01Array[index]
-				var item = PNLineChartDataItem()
-				item.y = yValue
-				return item
-			})
-			
-			
-			lineChart.lowAlarm = globalSettings.lowAlarm
-			lineChart.highAlarm = globalSettings.highAlarm
-			lineChart.chartData = [data01]
-			lineChart.strokeChart()
-			lineChart.delegate = self
-			
-			self.view.addSubview(lineChart)
-			*/
-			
-			currentSgv.text = "\( Int(sgvArray.last!) )"
+			currentSgvLabel.text = "\( Int(sgvArray.last!) )"
 			
 			checkAlarms()
 		} else
 		{
-			currentSgv.text = "?"
+			currentSgvLabel.text = "?"
 		}
 		
 	}
@@ -189,15 +189,15 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 		if xLabelNsdate.count > 0
 		{
 			let timeDifference = xLabelNsdate.last!.timeIntervalSinceNow / 60 * -1
-			timeNotification.text = "\( Int(timeDifference) ) minutes ago"
+			timeNotificationLabel.text = "\( Int(timeDifference) ) minutes ago"
 			
 			if timeDifference > 7
 			{
-				timeNotification.backgroundColor = UIColor.redColor()
+				timeNotificationLabel.backgroundColor = UIColor.redColor()
 			}
 			else
 			{
-				timeNotification.backgroundColor = UIColor.clearColor()
+				timeNotificationLabel.backgroundColor = UIColor.clearColor()
 			}
 		}
 		
@@ -287,21 +287,6 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 		JsonController().postData(globalSettings.url, postString: "", handler: self)
 	}
 	
-	func userClickedOnLineKeyPoint(point: CGPoint, lineIndex: Int, keyPointIndex: Int)
-	{
-		println("Click Key on line \(point.x), \(point.y) line index is \(lineIndex) and point index is \(keyPointIndex)")
-	}
-	
-	func userClickedOnLinePoint(point: CGPoint, lineIndex: Int)
-	{
-		println("Click Key on line \(point.x), \(point.y) line index is \(lineIndex)")
-	}
-	
-	func userClickedOnBarCharIndex(barIndex: Int)
-	{
-		println("Click  on bar \(barIndex)")
-	}
-
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
@@ -336,12 +321,15 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 			// xLabelArray.insert(date, atIndex:0)
 			
 			// dir
-			direction = dataDict.objectForKey("direction") as NSString
+			sgvDirectionArrow = dataDict.objectForKey("direction") as NSString
 			
 			//println("Date \(date) loaded into global var graphItems")
 		}
 		
+		// Do the rendering
 		displayChart()
+		drawArrow(sgvDirectionArrow, targetImage: arrowImage)
+		
 	}
 	
 	func onFailure() {
@@ -357,7 +345,7 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 	* Line chart delegate method.
 	*/
 	func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
-		label.text = "x: \(x)     y: \(yValues)"
+		chartLabel.text = "Glucose value: \(yValues)"
 	}
 
 }

@@ -40,7 +40,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="30" y="0.0" width="229" height="99"/>
+                                    <rect key="frame" x="11" y="13" width="198" height="99"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nh5-1D-m8V">
@@ -49,21 +49,29 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="90" y="102" width="162" height="26"/>
+                                    <rect key="frame" x="90" y="107" width="162" height="26"/>
                                 </variation>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="qT2-XR-JOM">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="217" y="11" width="82" height="63"/>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="jh9-Nr-mDd"/>
                                 <exclude reference="Nh5-1D-m8V"/>
+                                <exclude reference="qT2-XR-JOM"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="jh9-Nr-mDd"/>
                                 <include reference="Nh5-1D-m8V"/>
+                                <include reference="qT2-XR-JOM"/>
                             </mask>
                         </variation>
                     </view>
@@ -76,8 +84,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="currentSgv" destination="jh9-Nr-mDd" id="BPc-q6-iH1"/>
-                        <outlet property="timeNotification" destination="Nh5-1D-m8V" id="leP-Ei-mkS"/>
+                        <outlet property="arrowImage" destination="qT2-XR-JOM" id="PPw-bX-xmX"/>
+                        <outlet property="currentSgvLabel" destination="jh9-Nr-mDd" id="BQE-ZS-O44"/>
+                        <outlet property="timeNotificationLabel" destination="Nh5-1D-m8V" id="6ZB-bP-M7k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -117,6 +126,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow" width="130" height="87"/>
         <image name="settings" width="128" height="128"/>
     </resources>
 </document>
