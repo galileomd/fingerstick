@@ -15,7 +15,7 @@ class JsonController {
 		var postData:NSData = postString.dataUsingEncoding(NSASCIIStringEncoding)!
 		var jsonData:NSMutableArray = []
 		
-		let url: NSURL = NSURL(string: urlString)
+		let url: NSURL = NSURL(string: urlString)!
 		let request: NSURLRequest = NSURLRequest(URL: url)
 		let response: AutoreleasingUnsafeMutablePointer <NSURLResponse?>=nil
 		var error: AutoreleasingUnsafeMutablePointer <NSErrorPointer?>=nil
@@ -31,14 +31,14 @@ class JsonController {
 	func processData(response:NSData, handler:ResponseHandler)
 	{
 		let responseStr = NSString(data:response, encoding:NSUTF8StringEncoding)
-		NSLog("Response ==> %@", responseStr);
+		NSLog("Response ==> %@", responseStr!);
 		if let jsonData = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSMutableArray {
 			handler.onSuccess(jsonData)
 		}
 		else
 		{
 			handler.onFailure()
-	
+			// more to do here
 		}
 	}
 }

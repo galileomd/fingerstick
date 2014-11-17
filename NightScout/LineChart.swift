@@ -73,6 +73,7 @@ class LineChart: UIControl {
     var delegate: LineChartDelegate?
     
     // data stores
+	var labelStore: Array<UIView> = []
     var dataStore: Array<Array<CGFloat>> = []
     var dotsDataStore: Array<Array<DotCALayer>> = []
     var lineLayerStore: Array<CAShapeLayer> = []
@@ -88,6 +89,7 @@ class LineChart: UIControl {
         
         // category10 colors from d3 - https://github.com/mbostock/d3/wiki/Ordinal-Scales
         self.colors = [
+            UIColorFromHex(0xba5e90),
             UIColorFromHex(0x1f77b4),
             UIColorFromHex(0xff7f0e),
             UIColorFromHex(0x2ca02c),
@@ -498,8 +500,7 @@ class LineChart: UIControl {
         }
         
     }
-    
-    
+	
     
     /**
     * Draw x grid.
@@ -568,10 +569,8 @@ class LineChart: UIControl {
 		drawAlarm(highAlarm)
     }
     
-    
-    
     /**
-    * Draw x labels.
+	* Draw x labels.
 	// Added 11/12/14
 	// Manage custom x-axis labels in addition to normal x-axis count
     */
@@ -587,12 +586,11 @@ class LineChart: UIControl {
 			label.text = xAxisLabels.isEmpty ? String(index) : xAxisLabels[index]
 			label.sizeToFit()
 			self.addSubview(label)
-
+			labelStore.append(label)		// used to keep track of label added so we can clear in clearLines() and redraw
 		}
 	}
 	
-    
-    
+	
     /**
     * Draw y labels.
     */
@@ -610,6 +608,7 @@ class LineChart: UIControl {
 			label.sizeToFit()
             label.textAlignment = NSTextAlignment.Right
             self.addSubview(label)
+			labelStore.append(label)		// used to keep track of label added so we can clear in clearLines() and redraw
         }
     }
 	
@@ -622,6 +621,19 @@ class LineChart: UIControl {
 		self.setNeedsDisplay()
 	}
 	
+	/**
+	* Clear all lines
+	*/
+	func clearLines() {
+		for label in labelStore {
+			label.removeFromSuperview()
+		}
+		
+		// clears data from arrays
+		self.dataStore.removeAll(keepCapacity: true)
+		xAxisLabels.removeAll(keepCapacity: true)
+		labelStore.removeAll(keepCapacity: true)
+	}
 	
 	/**
 	* Add X Axis Label

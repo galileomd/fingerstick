@@ -44,7 +44,7 @@ class SettingsController: FormViewController, FormViewControllerDelegate
 		{
 			globalSettings.highAlarm = highAlarm
 		}
-		
+		println("Settings page:")
 		println(globalSettings.url)
 		println(globalSettings.pollingInterval)
 		println(globalSettings.lowAlarm)
@@ -56,6 +56,7 @@ class SettingsController: FormViewController, FormViewControllerDelegate
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.delegate = self
+		navigationController?.navigationBar.tintColor = UIColor.blackColor()
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Bordered, target: self, action: "submit:")
 	}
 
