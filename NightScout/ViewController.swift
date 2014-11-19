@@ -273,6 +273,7 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 		var sgvArray: [CGFloat] = []
 		var xLabelNsdate: [NSDate] = []
 		var sgvDirectionArrow: String = ""
+		var currentEpochDate = NSTimeInterval()
 		
 		//reset graph arrays
 		sgvArray.removeAll(keepCapacity: true)
@@ -297,8 +298,12 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 			dateFormatter.dateFormat = "MM/dd"
 			let date = dateFormatter.stringFromDate(nsDateFromEpoch)
 			
-			// arrow direction
-			sgvDirectionArrow = dataDict.objectForKey("direction") as NSString
+			// arrow direction - get latest one
+			if currentEpochDate < epochDate
+			{
+				sgvDirectionArrow = dataDict.objectForKey("direction") as NSString
+			}
+			currentEpochDate = epochDate
 			
 			//println("Date \(date) loaded into global var graphItems")
 		}
