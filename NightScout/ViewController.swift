@@ -93,6 +93,9 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 			
 			var xAxisLabels:[String] = sortXaxis(xLabelNsdate)
 			lineChart.clearLines()
+			
+			lineChart.lowAlarm = globalSettings.lowAlarm
+			lineChart.highAlarm = globalSettings.highAlarm
 			lineChart.addLine(sgvArray)
 			lineChart.addXAxisLabels(xAxisLabels)
 			
@@ -111,9 +114,7 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 				lineChart.areaUnderLinesVisible = false
 				lineChart.labelsXVisible = true
 				lineChart.labelsYVisible = true
-				lineChart.lowAlarm = globalSettings.lowAlarm
-				lineChart.highAlarm = globalSettings.highAlarm
-
+				
 				lineChart.setTranslatesAutoresizingMaskIntoConstraints(false)
 				lineChart.delegate = self
 			
@@ -121,7 +122,7 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 			
 				views["chart"] = lineChart
 				view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: nil, metrics: nil, views: views))
-				view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[chartLabel]-[chart(==300)]", options: nil, metrics: nil, views: views))
+				view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[chartLabel]-[chart(==250)]", options: nil, metrics: nil, views: views))
 				chartVisible = true
 			}
 			currentSgvLabel.text = "\( Int(sgvArray.last!) )"
