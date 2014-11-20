@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NightScout/ViewController.swift"
-            timestampString = "438120473.710447"
+            timestampString = "438156069.760573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350">
+            startingLineNumber = "349"
+            endingLineNumber = "349">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

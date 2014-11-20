@@ -15,17 +15,33 @@ class JsonController {
 		var postData:NSData = postString.dataUsingEncoding(NSASCIIStringEncoding)!
 		var jsonData:NSMutableArray = []
 		
-		let url: NSURL = NSURL(string: urlString)!
-		let request: NSURLRequest = NSURLRequest(URL: url)
-		let response: AutoreleasingUnsafeMutablePointer <NSURLResponse?>=nil
-		var error: AutoreleasingUnsafeMutablePointer <NSErrorPointer?>=nil
-		
-		let queue = NSOperationQueue.mainQueue()
-		
-		NSURLConnection.sendAsynchronousRequest(
-			request,
-			queue: queue,
-			completionHandler: {response, data, error in self.processData(data, handler: handler)})
+		if let url: NSURL = NSURL(string: urlString)
+		{
+			let request: NSURLRequest = NSURLRequest(URL: url)
+			let response: AutoreleasingUnsafeMutablePointer <NSURLResponse?>=nil
+			var error: AutoreleasingUnsafeMutablePointer <NSErrorPointer?>=nil
+			
+			let queue = NSOperationQueue.mainQueue()
+			
+			NSURLConnection.sendAsynchronousRequest(
+				request,
+				queue: queue,
+				completionHandler: {response, data, error in
+					if (error == nil)
+					{
+						self.processData(data, handler: handler)
+					} else
+					{
+						handler.onFailure("Server connection error")
+					}
+					
+				}
+			)
+		}
+		else
+		{
+			handler.onFailure("URL entered incorrectly")
+		}
 	}
 	
 	func processData(response:NSData, handler:ResponseHandler)
@@ -37,7 +53,7 @@ class JsonController {
 		}
 		else
 		{
-			handler.onFailure()
+			handler.onFailure("Error")
 			// more to do here
 		}
 	}

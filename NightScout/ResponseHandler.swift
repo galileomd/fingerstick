@@ -11,5 +11,5 @@ import Foundation
 protocol ResponseHandler
 {
 	func onSuccess(response:NSMutableArray)
-	func onFailure()
+	func onFailure(error:String)
 }

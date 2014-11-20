@@ -303,7 +303,6 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 			{
 				sgvDirectionArrow = dataDict.objectForKey("direction") as NSString
 				latestEpochDate = epochDate
-				println(latestEpochDate)
 			}
 			
 			//println("Date \(date) loaded into global var graphItems")
@@ -314,14 +313,14 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 		drawArrow(sgvDirectionArrow, targetImage: arrowImage)
 		checkAlarms(sgvArray.last!)
 		
-		latestXLabelDate = xLabelNsdate.last!		// need to make this global so the 1minute timer can access
+		latestXLabelDate = xLabelNsdate.last!		// needed to make this global so the 1minute timer can access
 		updateTimeNotification()
 	}
 	
-	func onFailure() {
+	func onFailure(error:String) {
 		let alertView = UIAlertView()
-		alertView.title = "Failed!"
-		alertView.message = "Something not good happened.."
+		alertView.title = "Error!"
+		alertView.message = error
 		alertView.addButtonWithTitle("OK")
 		alertView.show()
 	}
