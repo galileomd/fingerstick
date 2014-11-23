@@ -16,7 +16,6 @@
 		B21391E919FD8CC200C0C960 /* FormSectionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21391DA19FD8CC200C0C960 /* FormSectionDescriptor.swift */; };
 		B23842EB1A0DCA6C007A5698 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23842EA1A0DCA6C007A5698 /* Crashlytics.framework */; };
 		B23842ED1A0DDD57007A5698 /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = B23842EC1A0DDD57007A5698 /* alarm.wav */; };
-		B24F2B011A0B3124001C903B /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B24F2B001A0B3124001C903B /* Images-2.xcassets */; };
 		B2928A811A1447A700242688 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2928A7F1A1447A700242688 /* LineChart.swift */; };
 		B2928A821A1447A700242688 /* DotCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2928A801A1447A700242688 /* DotCALayer.swift */; };
 		B2BD59921A0ED65400551767 /* ResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD59911A0ED65400551767 /* ResponseHandler.swift */; };
@@ -61,7 +60,6 @@
 		B21391DA19FD8CC200C0C960 /* FormSectionDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSectionDescriptor.swift; sourceTree = "<group>"; };
 		B23842EA1A0DCA6C007A5698 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		B23842EC1A0DDD57007A5698 /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
-		B24F2B001A0B3124001C903B /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		B2928A7F1A1447A700242688 /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		B2928A801A1447A700242688 /* DotCALayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotCALayer.swift; sourceTree = "<group>"; };
 		B2BD59911A0ED65400551767 /* ResponseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHandler.swift; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 				B2CFD9FF19F9FFE2000A6765 /* LaunchScreen.xib */,
 				B23842EC1A0DDD57007A5698 /* alarm.wav */,
 				B2CFD9FD19F9FFE2000A6765 /* Images.xcassets */,
-				B24F2B001A0B3124001C903B /* Images-2.xcassets */,
 				B2928A7E1A14478800242688 /* LineChart */,
 				B21391C819FD8CC200C0C960 /* SwiftForms */,
 				B235857619FCABBC00C3062D /* JSON */,
@@ -333,7 +330,6 @@
 				B23842ED1A0DDD57007A5698 /* alarm.wav in Resources */,
 				B2CFD9FC19F9FFE2000A6765 /* Main.storyboard in Resources */,
 				B2CFDA0119F9FFE2000A6765 /* LaunchScreen.xib in Resources */,
-				B24F2B011A0B3124001C903B /* Images-2.xcassets in Resources */,
 				B2CFD9FE19F9FFE2000A6765 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
