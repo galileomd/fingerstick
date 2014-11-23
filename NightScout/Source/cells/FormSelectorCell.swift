@@ -8,20 +8,18 @@
 
 import UIKit
 
-class FormSelectorCell: FormBaseCell {
-
-    override func configure() {
-        super.configure()
-        accessoryType = .DisclosureIndicator
-    }
+class FormSelectorCell: FormValueCell {
+    
+    /// MARK: FormBaseCell
     
     override func update() {
-        super.update()
-        textLabel?.text = rowDescriptor.title
+ 
+        titleLabel.text = rowDescriptor.title
 
-        if let selectedValues = rowDescriptor.value as? [NSObject] {
+        var title: String!
+        
+        if let selectedValues = rowDescriptor.value as? [NSObject] { // multiple values
             
-            var title: String! = nil
             for optionValue in rowDescriptor.options {
                 if find(selectedValues, optionValue) != nil {
                     let optionTitle = rowDescriptor.titleForOptionValue(optionValue)
@@ -33,8 +31,18 @@ class FormSelectorCell: FormBaseCell {
                     }
                 }
             }
-            
-            detailTextLabel?.text = title
+        }
+        else if let selectedValue = rowDescriptor.value { // single value
+            title = rowDescriptor.titleForOptionValue(selectedValue)
+        }
+        
+        if title != nil && countElements(title) > 0 {
+            valueLabel.text = title
+            valueLabel.textColor = UIColor.blackColor()
+        }
+        else {
+            valueLabel.text = rowDescriptor.placeholder
+            valueLabel.textColor = UIColor.lightGrayColor()
         }
     }
     

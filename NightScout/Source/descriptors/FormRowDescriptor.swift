@@ -9,6 +9,7 @@
 import UIKit
 
 enum FormRowType {
+    case Unknown
     case Text
     case Name
     case Phone
@@ -24,6 +25,7 @@ enum FormRowType {
     case Time
     case DateAndTime
     case MultipleSelector
+	case Slider
 }
 
 typealias TitleFormatter = (NSObject) -> String!
@@ -33,29 +35,33 @@ class FormRowDescriptor: NSObject {
     /// MARK: Properties
     
     var title: String!
-    var rowType: FormRowType!
+    var rowType: FormRowType = .Unknown
     var tag: String!
-    
     var value: NSObject!
-    var options: [NSObject]!
     
-    var titleFormatter: TitleFormatter!
-    
-    var cellStyle: UITableViewCellStyle = .Value1
     var cellClass: AnyClass!
-    var cellConfiguration: Dictionary<String, NSObject> = [:]
     var cellAccessoryView: UIView!
+    var placeholder: String!
+    
+    var cellConfiguration: [String : AnyObject] = [:]
+    var visualConstraintsBlock: ((FormBaseCell) -> [String])!
+    
+    var options: [NSObject]!
+    var titleFormatter: TitleFormatter!
+    var allowsMultipleSelection = false
+    var selectorControllerClass: AnyClass!
     
     var dateFormatter: NSDateFormatter!
     
-    var selectorControllerClass: AnyClass!
+    var userInfo: [NSObject : AnyObject] = [:]
     
     /// MARK: Init
     
-    init(tag: String, rowType: FormRowType, title: String) {
+    init(tag: String, rowType: FormRowType, title: String, placeholder: String! = nil) {
         self.tag = tag
         self.rowType = rowType
         self.title = title
+        self.placeholder = placeholder
     }
     
     /// MARK: Public interface

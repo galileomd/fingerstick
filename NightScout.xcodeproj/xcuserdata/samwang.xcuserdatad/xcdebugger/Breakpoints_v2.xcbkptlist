@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NightScout/SettingsController.swift"
-            timestampString = "437889834.123264"
+            timestampString = "438467641.255983"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "clear()"
             landmarkType = "5">
          </BreakpointContent>

@@ -43,6 +43,10 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
         return formCell.rowDescriptor.options.count
     }
     
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.1
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let reuseIdentifier = NSStringFromClass(self.dynamicType)
@@ -82,29 +86,45 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
             formCell.rowDescriptor.value = []
         }
         
-        if var selectedOptions = formCell.rowDescriptor.value as? [NSObject] {
-
-            let optionValue = formCell.rowDescriptor.options[indexPath.row]
-            
-            if let index = find(selectedOptions, optionValue) {
-                selectedOptions.removeAtIndex(index)
-                cell?.accessoryType = .None
-            }
-            else {
-                selectedOptions.append(optionValue)
-                if formCell.rowDescriptor.cellAccessoryView == nil {
-                    cell?.accessoryType = .Checkmark
+        let allowsMultipleSelection = formCell.rowDescriptor.allowsMultipleSelection
+        let optionValue = formCell.rowDescriptor.options[indexPath.row]
+        
+        if allowsMultipleSelection {
+            if var selectedOptions = formCell.rowDescriptor.value as? [NSObject] {
+                
+                if let index = find(selectedOptions, optionValue) {
+                    selectedOptions.removeAtIndex(index)
+                    cell?.accessoryType = .None
                 }
                 else {
-                    cell?.accessoryView = formCell.rowDescriptor.cellAccessoryView
+                    selectedOptions.append(optionValue)
+                    if formCell.rowDescriptor.cellAccessoryView == nil {
+                        cell?.accessoryType = .Checkmark
+                    }
+                    else {
+                        cell?.accessoryView = formCell.rowDescriptor.cellAccessoryView
+                    }
+                }
+                
+                if selectedOptions.count > 0 {
+                    formCell.rowDescriptor.value = selectedOptions
+                }
+                else {
+                    formCell.rowDescriptor.value = nil
                 }
             }
-            
-            formCell.rowDescriptor.value = selectedOptions
-            
-            formCell.update()
+        }
+        else {
+            formCell.rowDescriptor.value = [optionValue]
         }
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        formCell.update()
+        
+        if allowsMultipleSelection {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
+        else {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
     }
 }

@@ -59,7 +59,7 @@ class FormViewController : UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = form.title
+        navigationItem.title = form?.title
     }
     
     /// MARK: UITableViewDataSource
@@ -83,7 +83,7 @@ class FormViewController : UITableViewController {
         var cell: FormBaseCell? = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as? FormBaseCell
         if cell == nil {
             
-            cell = formBaseCellClass(style: rowDescriptor.cellStyle, reuseIdentifier: reuseIdentifier)
+            cell = formBaseCellClass(style: .Default, reuseIdentifier: reuseIdentifier)
             cell?.configure()
         }
         
@@ -146,6 +146,7 @@ class FormViewController : UITableViewController {
     private class func defaultCellClassForRowType(rowType: FormRowType) -> FormBaseCell.Type {
         dispatch_once(&Static.onceDefaultCellClass) {
             Static.defaultCellClasses[FormRowType.Text] = FormTextFieldCell.self
+            Static.defaultCellClasses[FormRowType.Name] = FormTextFieldCell.self
             Static.defaultCellClasses[FormRowType.Phone] = FormTextFieldCell.self
             Static.defaultCellClasses[FormRowType.URL] = FormTextFieldCell.self
             Static.defaultCellClasses[FormRowType.Email] = FormTextFieldCell.self
@@ -157,8 +158,9 @@ class FormViewController : UITableViewController {
             Static.defaultCellClasses[FormRowType.Picker] = FormPickerCell.self
             Static.defaultCellClasses[FormRowType.Date] = FormDateCell.self
             Static.defaultCellClasses[FormRowType.Time] = FormDateCell.self
-            Static.defaultCellClasses[FormRowType.DateAndTime] = FormDateCell.self
-            Static.defaultCellClasses[FormRowType.MultipleSelector] = FormSelectorCell.self
+			Static.defaultCellClasses[FormRowType.DateAndTime] = FormDateCell.self
+			Static.defaultCellClasses[FormRowType.MultipleSelector] = FormSelectorCell.self
+			Static.defaultCellClasses[FormRowType.Slider] = FormSliderCell.self
         }
         return Static.defaultCellClasses[rowType]!
     }

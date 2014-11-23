@@ -117,13 +117,19 @@ class SettingsController: FormViewController, FormViewControllerDelegate
 		
 		let section2 = FormSectionDescriptor()
 		section2.headerTitle = "Alarms"
-		row = FormRowDescriptor(tag: "lowAlarm", rowType: .Phone, title: "Low range")
-		row.value = String(globalSettings.lowAlarm)
-		section2.addRow(row)
 		
-		row = FormRowDescriptor(tag: "highAlarm", rowType: .Phone, title: "High range")
-		row.value = String(globalSettings.highAlarm)
+		// thats right i made the clinical call to set these ranges
+		// todo: take arrow trend into consideration - make noise earlier if trending toward threshold?
+		row = FormRowDescriptor(tag: "lowAlarm", rowType: .Slider, title: "Low Alarm")
+		row.value = Float(globalSettings.lowAlarm)
+		row.options = [80,150]
 		section2.addRow(row)
+
+		row = FormRowDescriptor(tag: "highAlarm", rowType: .Slider, title: "High Alarm")
+		row.value = Float(globalSettings.highAlarm)
+		row.options = [160, 250]
+		section2.addRow(row)
+
 		
 		form.sections = [section1, section2]
 		
