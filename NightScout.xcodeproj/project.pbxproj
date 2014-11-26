@@ -296,6 +296,11 @@
 					B2CFD9F019F9FFE2000A6765 = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = 7M2R2A2CB6;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					B2CFDA0519F9FFE2000A6765 = {
 						CreatedOnToolsVersion = 6.0;

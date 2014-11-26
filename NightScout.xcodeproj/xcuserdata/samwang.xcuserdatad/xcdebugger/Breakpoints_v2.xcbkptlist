@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NightScout/ViewController.swift"
-            timestampString = "438156069.760573"
+            timestampString = "438486918.011734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "349"
@@ -223,6 +223,198 @@
             endingLineNumber = "109"
             landmarkName = "displayChart(_:sgvArray:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NightScout/JsonController.swift"
+            timestampString = "438552187.700666"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "postDataNew(_:postString:handler:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NightScout.JsonController.postData (NightScout.JsonController)(Swift.String, postString : ObjectiveC.NSString, handler : NightScout.ResponseHandler) -&gt; ()"
+                  moduleName = "NightScout"
+                  urlString = "file:///Users/samwang/GitHub/NightScout/NightScout/JsonController.swift"
+                  timestampString = "438552279.960499"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "574">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NightScout.JsonController.(postData (NightScout.JsonController) -&gt; (Swift.String, postString : ObjectiveC.NSString, handler : NightScout.ResponseHandler) -&gt; ()).(closure #1)"
+                  moduleName = "NightScout"
+                  urlString = "file:///Users/samwang/GitHub/NightScout/NightScout/JsonController.swift"
+                  timestampString = "438552279.960727"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "45">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "reabstraction thunk helper from @callee_owned (@owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSData&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSURLResponse&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; (@unowned ()) to @callee_owned (@in (Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSData&gt;, Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSURLResponse&gt;, Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;)) -&gt; (@out ())"
+                  moduleName = "NightScout"
+                  urlString = "file:///Users/samwang/GitHub/NightScout/NightScout/JsonController.swift"
+                  timestampString = "438552279.960909"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "reabstraction thunk helper from @callee_owned (@in (Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSData&gt;, Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSURLResponse&gt;, Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;)) -&gt; (@out ()) to @callee_owned (@owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSData&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSURLResponse&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; (@unowned ())"
+                  moduleName = "NightScout"
+                  urlString = "file:///Users/samwang/GitHub/NightScout/NightScout/JsonController.swift"
+                  timestampString = "438552279.961086"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "30">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "reabstraction thunk helper from @callee_owned (@owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSData&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSURLResponse&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; (@unowned ()) to @callee_unowned @objc_block (@unowned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSData&gt;, @unowned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSURLResponse&gt;, @unowned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; (@unowned ())"
+                  moduleName = "NightScout"
+                  urlString = "file:///Users/samwang/GitHub/NightScout/NightScout/JsonController.swift"
+                  timestampString = "438552279.961264"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NightScout/JsonController.swift"
+            timestampString = "438632080.093825"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "postDataNew(_:postString:handler:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NightScout/JsonController.swift"
+            timestampString = "438632083.876856"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "postDataNew(_:postString:handler:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NightScout.JsonController.postDataNew (NightScout.JsonController)(Swift.String, postString : ObjectiveC.NSString, handler : NightScout.ResponseHandler) -&gt; ()"
+                  moduleName = "NightScout"
+                  urlString = "file:///Users/samwang/GitHub/NightScout/NightScout/JsonController.swift"
+                  timestampString = "438632083.902616"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "508">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NightScout.JsonController.(postDataNew (NightScout.JsonController) -&gt; (Swift.String, postString : ObjectiveC.NSString, handler : NightScout.ResponseHandler) -&gt; ()).(closure #1)"
+                  moduleName = "NightScout"
+                  urlString = "file:///Users/samwang/GitHub/NightScout/NightScout/JsonController.swift"
+                  timestampString = "438632083.902866"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "reabstraction thunk helper from @callee_owned (@owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSData&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSURLResponse&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; (@unowned ()) to @callee_owned (@in (Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSData&gt;, Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSURLResponse&gt;, Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;)) -&gt; (@out ())"
+                  moduleName = "NightScout"
+                  urlString = "file:///Users/samwang/GitHub/NightScout/NightScout/JsonController.swift"
+                  timestampString = "438632083.903031"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "reabstraction thunk helper from @callee_owned (@in (Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSData&gt;, Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSURLResponse&gt;, Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;)) -&gt; (@out ()) to @callee_owned (@owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSData&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSURLResponse&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; (@unowned ())"
+                  moduleName = "NightScout"
+                  urlString = "file:///Users/samwang/GitHub/NightScout/NightScout/JsonController.swift"
+                  timestampString = "438632083.903187"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "reabstraction thunk helper from @callee_owned (@owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSData&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSURLResponse&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; (@unowned ()) to @callee_unowned @objc_block (@unowned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSData&gt;, @unowned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSURLResponse&gt;, @unowned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; (@unowned ())"
+                  moduleName = "NightScout"
+                  urlString = "file:///Users/samwang/GitHub/NightScout/NightScout/JsonController.swift"
+                  timestampString = "438632083.903368"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

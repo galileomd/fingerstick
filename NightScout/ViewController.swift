@@ -342,6 +342,7 @@ class ViewController: UIViewController, LineChartDelegate, ResponseHandler {
 	func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
 		chartLabel.text = "Glucose value: \(yValues)"
 	}
-
+	
 }
 
+ 
