@@ -2,7 +2,7 @@
 //  ResponseHandler.swift
 //  NightScout
 //
-//  Created by Sam Wang on 11/8/14.
+//  Created by Sam Wang on 11/8/14, co-authored with Sam Burba.
 //  Copyright (c) 2014 GalileoMD. All rights reserved.
 //
 

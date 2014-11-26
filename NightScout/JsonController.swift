@@ -2,9 +2,7 @@
 //  JsonController.swift
 //  SwiftLoginScreen
 //
-//  Created by Sam Wang on 8/9/14.
-//  Copyright (c) 2014 Dipin Krishna. All rights reserved.
-//
+//  Created by Sam Wang on 8/9/14, co-authored with Sam Burba.//
 
 import UIKit
 

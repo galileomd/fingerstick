@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  NightScout
 //
-//  Created by Sam Wang on 10/23/14.
+//  Created by Sam Wang on 10/23/14, co-authored with Sam Burba.  
 //  Copyright (c) 2014 GalileoMD. All rights reserved.
 //
 

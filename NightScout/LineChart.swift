@@ -1,4 +1,6 @@
 
+//  Created by Sam Wang on 10/23/14, co-authored with Sam Burba.
+//  Based on @zemirco/swift-linechart
 
 
 import UIKit

@@ -2,7 +2,7 @@
 //  SettingsController.swift
 //  NightScout
 //
-//  Created by Sam Wang on 10/26/14.
+//  Created by Sam Wang on 10/26/14, co-authored with Sam Burba.  
 //  Copyright (c) 2014 GalileoMD. All rights reserved.
 //
 
